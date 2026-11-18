@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 function App() {
   return (
       <div>
+    <Navbar/>
          <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
@@ -23,7 +24,6 @@ function App() {
       <Route path="/gallery" element={<Gallery />} />
       <Route path="/contact" element={<Contact />} />
     </Routes>
-    <Navbar/>
       </div>
    
     
