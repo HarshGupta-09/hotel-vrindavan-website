@@ -2,7 +2,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowDown, ArrowUpRight, Phone } from "lucide-react";
-
+import HighlightsMarquee from "../components/HighlightsMarquee";
+import RoomsShowcase from "../components/RoomsShowcase";
+import RestaurantShowcase from "../components/RestaurantShowcase";
 const heroStats = [
   "13 DOUBLE-BED AC ROOMS",
   "PURE VEGETARIAN DINING",
@@ -237,7 +239,13 @@ function Home() {
           </motion.div>
         </div>
       </section>
+      <HighlightsMarquee/>
+      <RoomsShowcase/>
+      <RestaurantShowcase/>
+
+      
     </main>
+
   );
 }
 
