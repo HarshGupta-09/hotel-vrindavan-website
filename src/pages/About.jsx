@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import Philosophy from "../components/aboutComponents/Philosophy"
+import OurStory from "../components/aboutComponents/OurStory"
+import OfferingsGrid from "../components/aboutComponents/OfferingsGrid"
+import CtaBanner from "../components/homeComponents/CtaBanner";
 // Apni khud ki reception / lobby photo yahan replace kar lena
 const heroImage =
   "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=2400&q=85";
@@ -94,7 +97,10 @@ function About() {
           </motion.div>
         </div>
       </section>
+      <OurStory/>
     <Philosophy/>
+    <OfferingsGrid/>
+    <CtaBanner/>
      
     </main>
   );
