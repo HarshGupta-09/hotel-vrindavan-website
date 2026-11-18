@@ -39,13 +39,14 @@ function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header
-      className={`${
-        isHome
-          ? "absolute bg-black/30"
-          : "relative bg-[#173c31]"
-      } inset-x-0 top-0 z-50 w-full text-white transition-colors duration-300`}
-    >
+<header
+  className={`${
+    isHome
+      ? "bg-[#101f1b]/95"
+      : "bg-[#173c31]"
+  } sticky top-0 z-50 w-full text-white transition-colors duration-300`}
+>
+      {/* Navbar */}
       <nav
         aria-label="Main navigation"
         className="mx-auto flex h-[82px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12"
@@ -101,7 +102,7 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Call Us Button - Desktop */}
+        {/* Call Us - Desktop */}
         <Link
           to="/contact"
           className="hidden shrink-0 items-center gap-2 rounded-full border border-[#c5a46d]/70 px-5 py-[11px] text-[13px] text-[#c5a46d] transition-all duration-300 hover:bg-[#c5a46d] hover:text-[#173c31] xl:inline-flex"
@@ -132,7 +133,7 @@ function Navbar() {
             animate={{ opacity: 1, height: "calc(100dvh - 82px)" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.28, ease: "easeInOut" }}
-            className="overflow-y-auto border-t border-white/10 bg-[#173c31]"
+            className="absolute left-0 top-full z-50 w-full overflow-y-auto border-t border-white/10 bg-[#173c31]"
           >
             <div className="flex min-h-full flex-col px-6 py-6 sm:px-10">
               {/* Mobile Navigation Links */}
