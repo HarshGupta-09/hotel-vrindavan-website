@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-
+import Philosophy from "../components/aboutComponents/Philosophy"
 // Apni khud ki reception / lobby photo yahan replace kar lena
 const heroImage =
   "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=2400&q=85";
@@ -94,7 +94,7 @@ function About() {
           </motion.div>
         </div>
       </section>
-
+    <Philosophy/>
      
     </main>
   );
