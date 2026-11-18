@@ -5,6 +5,9 @@ import { ArrowDown, ArrowUpRight, Phone } from "lucide-react";
 import HighlightsMarquee from "../components/HighlightsMarquee";
 import RoomsShowcase from "../components/RoomsShowcase";
 import RestaurantShowcase from "../components/RestaurantShowcase";
+import WhyChooseUs from "../components/WhyChooseUs";
+import GalleryPreview from "../components/GalleryPreview";
+import Testimonials from "../components/Testimonials";
 const heroStats = [
   "13 DOUBLE-BED AC ROOMS",
   "PURE VEGETARIAN DINING",
@@ -242,6 +245,9 @@ function Home() {
       <HighlightsMarquee/>
       <RoomsShowcase/>
       <RestaurantShowcase/>
+      <WhyChooseUs/>
+      <GalleryPreview/>
+      <Testimonials/>
 
       
     </main>
