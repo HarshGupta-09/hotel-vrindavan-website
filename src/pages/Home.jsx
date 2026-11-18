@@ -8,6 +8,8 @@ import RestaurantShowcase from "../components/RestaurantShowcase";
 import WhyChooseUs from "../components/WhyChooseUs";
 import GalleryPreview from "../components/GalleryPreview";
 import Testimonials from "../components/Testimonials";
+import CtaBanner from "../components/CtaBanner";
+import Footer from "../components/Footer";
 const heroStats = [
   "13 DOUBLE-BED AC ROOMS",
   "PURE VEGETARIAN DINING",
@@ -248,6 +250,8 @@ function Home() {
       <WhyChooseUs/>
       <GalleryPreview/>
       <Testimonials/>
+      <CtaBanner/>
+      <Footer/>
 
       
     </main>
