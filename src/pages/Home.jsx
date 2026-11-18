@@ -2,14 +2,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { ArrowDown, ArrowUpRight, Phone } from "lucide-react";
-import HighlightsMarquee from "../components/HighlightsMarquee";
-import RoomsShowcase from "../components/RoomsShowcase";
-import RestaurantShowcase from "../components/RestaurantShowcase";
-import WhyChooseUs from "../components/WhyChooseUs";
-import GalleryPreview from "../components/GalleryPreview";
-import Testimonials from "../components/Testimonials";
-import CtaBanner from "../components/CtaBanner";
-import Footer from "../components/Footer";
+import HighlightsMarquee from "../components/homeComponents/HighlightsMarquee";
+import RoomsShowcase from "../components/homeComponents/RoomsShowcase";
+import RestaurantShowcase from "../components/homeComponents/RestaurantShowcase";
+import WhyChooseUs from "../components/homeComponents/WhyChooseUs";
+import GalleryPreview from "../components/homeComponents/GalleryPreview";
+import Testimonials from "../components/homeComponents/Testimonials";
+import CtaBanner from "../components/homeComponents/CtaBanner";
+
 const heroStats = [
   "13 DOUBLE-BED AC ROOMS",
   "PURE VEGETARIAN DINING",
@@ -251,7 +251,7 @@ function Home() {
       <GalleryPreview/>
       <Testimonials/>
       <CtaBanner/>
-      <Footer/>
+     
 
       
     </main>

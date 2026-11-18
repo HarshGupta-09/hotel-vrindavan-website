@@ -7,23 +7,28 @@ import MarriageGarden from "./pages/MarriageGarden";
 import BanquetHall from "./pages/BanquetHall";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
-import Navbar from "./components/Navbar";
+
+import MainLayout from "./layouts/MainLayout";
 
 
 function App() {
   return (
       <div>
-    <Navbar/>
-         <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/rooms" element={<Rooms />} />
-      <Route path="/restaurant" element={<Restaurant />} />
-      <Route path="/marriage-garden" element={<MarriageGarden />} />
-      <Route path="/banquet-hall" element={<BanquetHall />} />
-      <Route path="/gallery" element={<Gallery />} />
-      <Route path="/contact" element={<Contact />} />
+   
+     <Routes>
+      <Route element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="rooms" element={<Rooms />} />
+        <Route path="restaurant" element={<Restaurant />} />
+        <Route path="marriage-garden" element={<MarriageGarden />} />
+        <Route path="banquet-hall" element={<BanquetHall />} />
+        <Route path="gallery" element={<Gallery />} />
+        <Route path="contact" element={<Contact />} />
+      </Route>
     </Routes>
+    
+
       </div>
    
     
