@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
@@ -16,16 +17,33 @@ const navLinks = [
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const location = useLocation();
 
-  const isHome = location.pathname === "/";
-
-  // Close mobile menu when route changes
+  // Close mobile menu on route change
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent background scrolling while mobile menu is open
+  // Handle navbar background on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Prevent background scrolling when mobile menu is open
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -39,14 +57,13 @@ function Navbar() {
   }, [isMenuOpen]);
 
   return (
-<header
-  className={`${
-    isHome
-      ? "bg-[#101f1b]/95"
-      : "bg-[#173c31]"
-  } sticky top-0 z-50 w-full text-white transition-colors duration-300`}
->
-      {/* Navbar */}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 w-full text-white transition-all duration-300 ${
+        isScrolled
+          ? "bg-[#173c31]/95 shadow-lg shadow-black/10 backdrop-blur-md"
+          : "bg-[#101f1b]/25"
+      }`}
+    >
       <nav
         aria-label="Main navigation"
         className="mx-auto flex h-[82px] max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:px-12"
@@ -102,7 +119,7 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Call Us - Desktop */}
+        {/* Call Us Button - Desktop */}
         <Link
           to="/contact"
           className="hidden shrink-0 items-center gap-2 rounded-full border border-[#c5a46d]/70 px-5 py-[11px] text-[13px] text-[#c5a46d] transition-all duration-300 hover:bg-[#c5a46d] hover:text-[#173c31] xl:inline-flex"
@@ -124,7 +141,7 @@ function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -132,7 +149,10 @@ function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "calc(100dvh - 82px)" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.28, ease: "easeInOut" }}
+            transition={{
+              duration: 0.28,
+              ease: "easeInOut",
+            }}
             className="absolute left-0 top-full z-50 w-full overflow-y-auto border-t border-white/10 bg-[#173c31]"
           >
             <div className="flex min-h-full flex-col px-6 py-6 sm:px-10">
@@ -161,7 +181,9 @@ function Navbar() {
                     >
                       {link.name}
 
-                      <span className="text-sm text-[#c5a46d]">↗</span>
+                      <span className="text-sm text-[#c5a46d]">
+                        ↗
+                      </span>
                     </NavLink>
                   </motion.div>
                 ))}

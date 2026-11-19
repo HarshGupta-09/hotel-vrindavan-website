@@ -1,9 +1,10 @@
 import React from 'react'
+import RoomsHero from '../components/hotelComponents/RoomsHero'
 
 const Rooms = () => {
   return (
     <div>
-      Rooms page
+      <RoomsHero/>
     </div>
   )
 }
