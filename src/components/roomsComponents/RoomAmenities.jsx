@@ -9,6 +9,7 @@ import {
   ShowerHead,
   Phone,
 } from "lucide-react";
+import { motion } from "motion/react";
 
 const amenities = [
   {
@@ -49,12 +50,16 @@ const amenities = [
 function RoomAmenities() {
   return (
     <section className="w-full bg-[#eee8dd] px-5 py-20 sm:px-8 sm:py-24 lg:py-28">
-
       <div className="mx-auto max-w-[1100px]">
 
         {/* Section Heading */}
-        <div className="mb-12 text-center sm:mb-14">
-
+        <motion.div
+          className="mb-12 text-center sm:mb-14"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <div className="mb-5 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#c5a46d]" />
 
@@ -72,18 +77,25 @@ function RoomAmenities() {
             </span>{" "}
             for You
           </h2>
-
-        </div>
+        </motion.div>
 
         {/* Amenities Grid */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
 
-          {amenities.map((amenity) => {
+          {amenities.map((amenity, index) => {
             const Icon = amenity.icon;
 
             return (
-              <div
+              <motion.div
                 key={amenity.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: "easeOut",
+                }}
                 className="
                   group flex min-h-[123px] cursor-default flex-col
                   items-start justify-start
@@ -93,7 +105,6 @@ function RoomAmenities() {
                   focus-within:bg-transparent
                 "
               >
-
                 {/* Icon Box */}
                 <div
                   className="
@@ -124,13 +135,11 @@ function RoomAmenities() {
                     {amenity.description}
                   </p>
                 )}
-
-              </div>
+              </motion.div>
             );
           })}
 
         </div>
-
       </div>
     </section>
   );

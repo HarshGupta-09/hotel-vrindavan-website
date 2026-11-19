@@ -1,4 +1,6 @@
 
+import { motion } from "motion/react";
+
 const roomImages = [
   {
     id: 1,
@@ -51,7 +53,13 @@ function RoomGallery() {
       <div className="mx-auto max-w-[900px]">
 
         {/* Section Heading */}
-        <div className="mb-8 text-center sm:mb-10">
+        <motion.div
+          className="mb-8 text-center sm:mb-10"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
 
           <div className="mb-3 flex items-center justify-center gap-2">
             <span className="h-px w-5 bg-[#c5a46d]" />
@@ -70,7 +78,7 @@ function RoomGallery() {
             with the hotel's own.
           </p>
 
-        </div>
+        </motion.div>
 
         {/* Masonry-style Gallery */}
         <div className="mx-auto grid max-w-[700px] grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-2.5">
@@ -83,10 +91,18 @@ function RoomGallery() {
               }`}
             >
 
-              {column.map((image) => (
-                <div
+              {column.map((image, imageIndex) => (
+                <motion.div
                   key={image.id}
                   className={`group relative w-full overflow-hidden bg-[#e8e1d5] ${image.className}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{
+                    duration: 0.7,
+                    delay: (columnIndex * 2 + imageIndex) * 0.1,
+                    ease: "easeOut",
+                  }}
                 >
                   <img
                     src={image.src}
@@ -96,7 +112,7 @@ function RoomGallery() {
                   />
 
                   <div className="absolute inset-0 bg-[#173c31]/0 transition-colors duration-500 group-hover:bg-[#173c31]/10" />
-                </div>
+                </motion.div>
               ))}
 
             </div>

@@ -1,4 +1,6 @@
 
+import { motion } from "motion/react";
+
 const accessibilityPoints = [
   "Ground-floor rooms — no lift required",
   "On-site parking with CCTV surveillance",
@@ -12,7 +14,12 @@ function RoomLocation() {
       <div className="mx-auto grid max-w-[900px] grid-cols-1 gap-8 md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-12">
 
         {/* Left Content */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-7 bg-[#c5a46d]" />
 
@@ -31,21 +38,35 @@ function RoomLocation() {
             simple to find from the city's main routes, with parking on-site
             and reception on the ground floor.
           </p>
-        </div>
+        </motion.div>
 
         {/* Right Content */}
-        <div className="border-l border-[#c5a46d]/50 pl-5 sm:pl-6">
+        <motion.div
+          className="border-l border-[#c5a46d]/50 pl-5 sm:pl-6"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+        >
           <ul className="flex flex-col gap-3">
             {accessibilityPoints.map((point, index) => (
-              <li
+              <motion.li
                 key={index}
                 className="text-[11px] leading-relaxed text-[#555750] transition-colors duration-300 hover:text-[#b58c50] sm:text-[12px]"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.25 + index * 0.1,
+                  ease: "easeOut",
+                }}
               >
                 {point}
-              </li>
+              </motion.li>
             ))}
           </ul>
-        </div>
+        </motion.div>
 
       </div>
     </section>

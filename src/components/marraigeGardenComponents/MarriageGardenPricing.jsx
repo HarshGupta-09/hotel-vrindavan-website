@@ -1,11 +1,17 @@
 
-import { Link } from "react-router-dom";
 import { Phone } from "lucide-react";
+import { motion } from "motion/react";
 
 function MarriageGardenPricing() {
   return (
     <section className="border-b-[3px] border-[#173c31] bg-[#eae3d8] px-5 py-20 sm:px-8 sm:py-24 lg:py-24">
-      <div className="mx-auto flex max-w-[600px] flex-col items-center text-center">
+      <motion.div
+        className="mx-auto flex max-w-[600px] flex-col items-center text-center"
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.75, ease: "easeOut" }}
+      >
 
         {/* Section Label */}
         <div className="mb-4 flex items-center justify-center gap-3">
@@ -36,19 +42,23 @@ function MarriageGardenPricing() {
         </p>
 
         {/* CTA */}
-     <a
-  href="tel:7987775155"
-  className="mt-7 inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-[#1c4035] px-7 py-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-white transition-colors duration-300 hover:bg-[#c5a46d] sm:px-8"
-  style={{ color: "#ffffff" }}
->
-  <Phone size={13} strokeWidth={1.7} color="#ffffff" />
+        <motion.a
+          href="tel:7987775155"
+          className="mt-7 inline-flex min-h-[46px] items-center justify-center gap-2 rounded-full bg-[#1c4035] px-7 py-3 text-[10px] font-semibold uppercase tracking-[0.08em] text-white transition-colors duration-300 hover:bg-[#c5a46d] sm:px-8"
+          style={{ color: "#ffffff" }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
+          <Phone size={13} strokeWidth={1.7} color="#ffffff" />
 
-  <span style={{ color: "inherit" }}>
-    Call for a Package Quote
-  </span>
-</a>
+          <span style={{ color: "inherit" }}>
+            Call for a Package Quote
+          </span>
+        </motion.a>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

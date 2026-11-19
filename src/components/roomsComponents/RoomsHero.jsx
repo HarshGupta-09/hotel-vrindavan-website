@@ -1,4 +1,6 @@
 
+import { motion } from "motion/react";
+
 function RoomsHero() {
   const heroImage =
     "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=2400&q=90";
@@ -11,6 +13,18 @@ function RoomsHero() {
         backgroundPosition: "center 55%",
       }}
     >
+      {/* Background Image Animation */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url("${heroImage}")`,
+          backgroundPosition: "center 55%",
+        }}
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
+      />
+
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-[#101f1b]/60" />
 
@@ -25,35 +39,55 @@ function RoomsHero() {
         <div className="max-w-[560px]">
 
           {/* Eyebrow */}
-          <div className="mb-6 flex items-center gap-4">
+          <motion.div
+            className="mb-6 flex items-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+          >
             <span className="h-px w-11 shrink-0 bg-[#c5a46d]" />
 
             <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#c5a46d] sm:text-[11px]">
               Hotel & Rooms
             </span>
-          </div>
+          </motion.div>
 
           {/* Heading */}
-          <h1 className="font-heading text-[39px] leading-[1.15] text-[#f8f5ee] sm:text-[48px] md:text-[56px] lg:text-[64px]">
+          <motion.h1
+            className="font-heading text-[39px] leading-[1.15] text-[#f8f5ee] sm:text-[48px] md:text-[56px] lg:text-[64px]"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          >
             Serene Comfort on
             <br />
             the <span className="whitespace-nowrap">✳Ground Floor✳</span>
-          </h1>
+          </motion.h1>
 
           {/* Description */}
-          <p className="mt-6 max-w-[520px] text-[14px] leading-[1.85] text-white/80 sm:text-[15px]">
+          <motion.p
+            className="mt-6 max-w-[520px] text-[14px] leading-[1.85] text-white/80 sm:text-[15px]"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.75, ease: "easeOut" }}
+          >
             13 well-kept double-bed air-conditioned rooms — every one
             of them on the ground floor, just steps from reception.
-          </p>
+          </motion.p>
 
           {/* Breadcrumb */}
-          <div className="mt-7 flex items-center gap-3 text-[9px] font-medium uppercase tracking-[0.15em] sm:text-[10px]">
+          <motion.div
+            className="mt-7 flex items-center gap-3 text-[9px] font-medium uppercase tracking-[0.15em] sm:text-[10px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.95, ease: "easeOut" }}
+          >
             <span className="text-white/50">Home</span>
 
             <span className="text-[#c5a46d]">◆</span>
 
             <span className="text-[#c5a46d]">Hotel & Rooms</span>
-          </div>
+          </motion.div>
 
         </div>
       </div>

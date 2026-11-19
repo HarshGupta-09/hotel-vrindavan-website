@@ -7,6 +7,7 @@ import {
   Music2,
   ParkingSquare,
 } from "lucide-react";
+import { motion } from "motion/react";
 
 const facilities = [
   {
@@ -41,7 +42,13 @@ function MarriageGardenVenue() {
       <div className="mx-auto grid max-w-[1210px] grid-cols-1 items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
 
         {/* Guest Capacity */}
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
+        <motion.div
+          className="flex flex-col items-center text-center lg:items-start lg:text-left"
+          initial={{ opacity: 0, x: -35 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <div className="flex items-center gap-4">
             <span className="font-heading text-5xl font-normal leading-none text-[#c5a46d] sm:text-6xl lg:text-7xl">
               ≈
@@ -55,10 +62,15 @@ function MarriageGardenVenue() {
           <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.28em] text-white/60 sm:text-[11px]">
             Guests Accommodated
           </p>
-        </div>
+        </motion.div>
 
         {/* Venue Information */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: 35 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+        >
           {/* Eyebrow */}
           <div className="mb-5 flex items-center gap-3">
             <span className="h-px w-9 bg-[#c5a46d]" />
@@ -87,13 +99,21 @@ function MarriageGardenVenue() {
 
           {/* Facilities Grid */}
           <div className="mt-7 grid grid-cols-1 gap-2.5 min-[420px]:grid-cols-2 sm:grid-cols-3">
-            {facilities.map((facility) => {
+            {facilities.map((facility, index) => {
               const Icon = facility.icon;
 
               return (
-                <div
+                <motion.div
                   key={facility.title}
                   className="group flex min-h-[53px] items-center gap-3 border border-white/[0.12] bg-white/[0.035] px-3 py-3 transition-all duration-300 hover:border-[#c5a46d]/50 hover:bg-white/[0.08] sm:px-3.5"
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.2 + index * 0.08,
+                    ease: "easeOut",
+                  }}
                 >
                   <Icon
                     size={14}
@@ -104,11 +124,11 @@ function MarriageGardenVenue() {
                   <span className="text-[11px] leading-[1.4] text-white/75 sm:text-xs">
                     {facility.title}
                   </span>
-                </div>
+                </motion.div>
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

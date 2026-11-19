@@ -1,5 +1,6 @@
 
 import { Utensils, Landmark, Bell } from "lucide-react";
+import { motion } from "motion/react";
 
 const diningOptions = [
   {
@@ -31,7 +32,13 @@ function DiningOptions() {
       <div className="mx-auto max-w-[1210px]">
 
         {/* Section Heading */}
-        <div className="mb-12 text-center sm:mb-14">
+        <motion.div
+          className="mb-12 text-center sm:mb-14"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-9 bg-[#c5a46d]" />
 
@@ -48,17 +55,25 @@ function DiningOptions() {
               In Your Room
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Dining Options */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:gap-7">
-          {diningOptions.map((option) => {
+          {diningOptions.map((option, index) => {
             const Icon = option.icon;
 
             return (
-              <div
+              <motion.div
                 key={option.id}
                 className="group border border-white/[0.12] bg-white/[0.025] px-7 py-8 transition-all duration-300 hover:border-[#c5a46d]/50 hover:bg-white/[0.06] sm:px-8 sm:py-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  duration: 0.65,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
               >
                 {/* Icon */}
                 <div className="mb-6 flex h-11 w-11 items-center justify-center border border-[#c5a46d]/50 text-[#c5a46d] transition-all duration-300 group-hover:bg-[#c5a46d] group-hover:text-[#19221f]">
@@ -74,7 +89,7 @@ function DiningOptions() {
                 <p className="max-w-[340px] text-[13px] leading-[1.8] text-white/60">
                   {option.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>

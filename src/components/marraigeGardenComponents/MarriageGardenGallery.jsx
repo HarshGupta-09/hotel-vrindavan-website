@@ -1,4 +1,6 @@
 
+import { motion } from "motion/react";
+
 const galleryColumns = [
   [
     {
@@ -54,7 +56,13 @@ function MarriageGardenGallery() {
       <div className="mx-auto max-w-[680px]">
 
         {/* Gallery Heading */}
-        <div className="mb-7">
+        <motion.div
+          className="mb-7"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-7 bg-[#c5a46d]" />
 
@@ -74,16 +82,27 @@ function MarriageGardenGallery() {
             Representative photographs — actual event photos will be
             updated with the hotel's own.
           </p>
-        </div>
+        </motion.div>
 
         {/* Masonry Gallery */}
         <div className="grid grid-cols-3 items-start gap-1.5 sm:gap-2">
           {galleryColumns.map((column, columnIndex) => (
-            <div key={columnIndex} className="flex min-w-0 flex-col gap-1.5 sm:gap-2">
+            <div
+              key={columnIndex}
+              className="flex min-w-0 flex-col gap-1.5 sm:gap-2"
+            >
               {column.map((image, imageIndex) => (
-                <div
+                <motion.div
                   key={imageIndex}
                   className={`group relative overflow-hidden bg-[#e8e0d4] ${image.height}`}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{
+                    duration: 0.65,
+                    delay: columnIndex * 0.12 + imageIndex * 0.08,
+                    ease: "easeOut",
+                  }}
                 >
                   <img
                     src={image.src}
@@ -93,7 +112,7 @@ function MarriageGardenGallery() {
                   />
 
                   <div className="absolute inset-0 bg-[#173c31]/0 transition-colors duration-300 group-hover:bg-[#173c31]/15" />
-                </div>
+                </motion.div>
               ))}
             </div>
           ))}

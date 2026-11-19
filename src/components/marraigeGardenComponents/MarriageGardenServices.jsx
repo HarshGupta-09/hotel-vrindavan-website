@@ -1,4 +1,6 @@
 
+import { motion } from "motion/react";
+
 const services = [
   {
     title: "Catering",
@@ -32,7 +34,13 @@ function MarriageGardenServices() {
       <div className="mx-auto max-w-[1016px]">
 
         {/* Section Heading */}
-        <div className="mb-10 sm:mb-12">
+        <motion.div
+          className="mb-10 sm:mb-12"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <div className="mb-3 flex items-center gap-2">
             <span className="h-px w-7 bg-[#c5a46d]" />
 
@@ -52,12 +60,23 @@ function MarriageGardenServices() {
             From the first flower to the last course, our in-house
             arrangements keep your celebration effortless.
           </p>
-        </div>
+        </motion.div>
 
         {/* Service Cards */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-6">
-          {services.map((service) => (
-            <article key={service.title} className="group min-w-0">
+          {services.map((service, index) => (
+            <motion.article
+              key={service.title}
+              className="group min-w-0"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.15,
+                ease: "easeOut",
+              }}
+            >
 
               {/* Image */}
               <div className="aspect-[1.5/1] overflow-hidden bg-[#ded5c8]">
@@ -80,7 +99,7 @@ function MarriageGardenServices() {
                 </p>
               </div>
 
-            </article>
+            </motion.article>
           ))}
         </div>
 

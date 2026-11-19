@@ -1,4 +1,6 @@
 
+import { motion } from "motion/react";
+
 const restaurantHighlights = [
   "PURE VEGETARIAN",
   "DINE-IN",
@@ -13,7 +15,13 @@ function RestaurantIntro() {
       <div className="mx-auto grid max-w-[1220px] grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
 
         {/* Left Content */}
-        <div className="max-w-[480px]">
+        <motion.div
+          className="max-w-[480px]"
+          initial={{ opacity: 0, x: -35 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+        >
 
           {/* Eyebrow */}
           <div className="mb-5 flex items-center gap-3">
@@ -44,20 +52,34 @@ function RestaurantIntro() {
 
           {/* Highlight Tags */}
           <div className="mt-7 flex max-w-[470px] flex-wrap gap-2">
-            {restaurantHighlights.map((item) => (
-              <span
+            {restaurantHighlights.map((item, index) => (
+              <motion.span
                 key={item}
                 className="border border-[#c9c2b5] bg-[#eee9df] px-3.5 py-2 text-[9px] font-medium tracking-[0.08em] text-[#55574f] transition-all duration-300 hover:border-[#c5a46d] hover:bg-[#c5a46d] hover:text-[#173c31] sm:text-[10px]"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.2 + index * 0.08,
+                  ease: "easeOut",
+                }}
               >
                 {item}
-              </span>
+              </motion.span>
             ))}
           </div>
 
-        </div>
+        </motion.div>
 
         {/* Right Image */}
-        <div className="relative mx-auto w-full max-w-[580px] lg:ml-auto">
+        <motion.div
+          className="relative mx-auto w-full max-w-[580px] lg:ml-auto"
+          initial={{ opacity: 0, x: 35 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+        >
 
           {/* Offset Border */}
           <div className="absolute -right-3 -bottom-3 h-full w-full border border-[#c5a46d]/40 sm:-right-4 sm:-bottom-4" />
@@ -72,7 +94,7 @@ function RestaurantIntro() {
             />
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>

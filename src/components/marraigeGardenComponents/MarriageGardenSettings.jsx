@@ -1,4 +1,6 @@
 
+import { motion } from "motion/react";
+
 const settings = [
   {
     id: 1,
@@ -28,7 +30,13 @@ function MarriageGardenSettings() {
       <div className="mx-auto max-w-[1010px]">
 
         {/* Section Heading */}
-        <div className="mb-10 text-center sm:mb-12">
+        <motion.div
+          className="mb-10 text-center sm:mb-12"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-px w-8 bg-[#c5a46d]" />
 
@@ -46,12 +54,23 @@ function MarriageGardenSettings() {
             </span>{" "}
             Unforgettable Day
           </h2>
-        </div>
+        </motion.div>
 
         {/* Settings Grid */}
         <div className="grid grid-cols-1 gap-9 sm:gap-8 md:grid-cols-2 md:gap-[30px]">
-          {settings.map((setting) => (
-            <article key={setting.id} className="group min-w-0">
+          {settings.map((setting, index) => (
+            <motion.article
+              key={setting.id}
+              className="group min-w-0"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.15,
+                ease: "easeOut",
+              }}
+            >
 
               {/* Image */}
               <div className="relative aspect-[1.5/1] overflow-hidden bg-[#e8e0d4]">
@@ -74,7 +93,7 @@ function MarriageGardenSettings() {
                 </p>
               </div>
 
-            </article>
+            </motion.article>
           ))}
         </div>
 
