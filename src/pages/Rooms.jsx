@@ -1,7 +1,8 @@
 import React from 'react'
-import RoomsHero from '../components/hotelComponents/RoomsHero'
-import RoomOverview from "../components/hotelComponents/RoomOverview"
-import RoomAmenities from '../components/hotelComponents/RoomAmenities'
+import RoomsHero from '../components/roomsComponents/RoomsHero'
+import RoomOverview from "../components/roomsComponents/RoomOverview"
+import RoomAmenities from '../components/roomsComponents/RoomAmenities'
+import RoomGallery from '../components/roomsComponents/RoomGallery'
 
 const Rooms = () => {
   return (
@@ -9,6 +10,7 @@ const Rooms = () => {
       <RoomsHero/>
       <RoomOverview/>
       <RoomAmenities/>
+      <RoomGallery/>
     </div>
   )
 }
