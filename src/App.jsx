@@ -9,12 +9,13 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 
 import MainLayout from "./layouts/MainLayout";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function App() {
   return (
       <div>
-   
+   <ScrollToTop/>
      <Routes>
       <Route element={<MainLayout />}>
         <Route index element={<Home />} />
