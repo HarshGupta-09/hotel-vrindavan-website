@@ -1,9 +1,12 @@
 import React from 'react'
+import RestaurantHero from '../components/restaurantComponents/RestaurantHero'
+import RestaurantIntro from '../components/restaurantComponents/RestaurantIntro'
 
 const Resturant = () => {
   return (
     <div>
-      Resturant page
+      <RestaurantHero/>
+      <RestaurantIntro/>
     </div>
   )
 }
