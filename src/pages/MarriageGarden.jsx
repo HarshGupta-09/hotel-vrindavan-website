@@ -1,9 +1,10 @@
 import React from 'react'
+import MarriageGardenHero from '../components/marraigeGardenComponents/MarriageGardenHero'
 
 const MarriageGarden = () => {
   return (
     <div>
-      MarriageGarden page
+      <MarriageGardenHero/>
     </div>
   )
 }
