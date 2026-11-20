@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Navigation } from "lucide-react";
 
@@ -203,7 +204,18 @@ function Footer() {
             © {new Date().getFullYear()} Hotel Vrindavan, Jabalpur. All rights
             reserved.
           </p>
-          <p>Hotel · Pure Veg Restaurant · Marriage Garden · Banquet Hall</p>
+
+          <p>
+            Hotel · Pure Veg Restaurant · Marriage Garden · Banquet Hall
+          </p>
+
+          {/* Developer Signature */}
+          <p className="text-[10px] text-white/50">
+            Designed & Developed by{" "}
+            <span className="font-semibold tracking-wide text-[#c5a46d]">
+              Harsh Gupta
+            </span>
+          </p>
         </div>
       </div>
     </footer>
